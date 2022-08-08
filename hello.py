@@ -15,9 +15,13 @@
 <class 'NoneType'>
 """
 
-list = [5, "string", 0.15, True, None, b'text', [1, "строка"], complex(1, 2)]
+my_list = [
+    5, "string", 0.15,
+    True, None, b'text',
+    [1, "строка"], complex(1, 2)
+]
 
-for el in list:
+for el in my_list:
     print(type(el))
 
 """
@@ -34,17 +38,17 @@ for el in list:
 Результат: 2 1 3
 """
 
-list = input("Введите целые числа через пробел: ").split()
+my_list = input("Введите целые числа через пробел: ").split()
 
 i = 0
-while i < len(list):
-    if i >= len(list) - 1:
+while i < len(my_list):
+    if i >= len(my_list) - 1:
         break
     else:
-        list[i], list[i + 1] = list[i + 1], list[i]
+        my_list[i], my_list[i + 1] = my_list[i + 1], my_list[i]
     i = i + 2
 
-print("Результат: ", list)
+print("Результат: ", my_list)
 
 """
 3. Пользователь вводит месяц в виде целого числа от 1 до 12.
