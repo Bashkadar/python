@@ -124,30 +124,33 @@ def func_expo_2(x, y):
 этих чисел к полученной ранее сумме и после этого завершить программу.
 """
 
-res_sum = 0
-stop_progam = False
+
+def ext_func_sum():
+    """Внешняя функция, для хранения локальных переменных, содержащих результаты суммирования"""
+    res_sum = 0
+    stop_progam = False
+
+    def int_func_sum():
+        """
+            Внутренняя рекурсивная функция суммирования чисел, вводимых пользователем
+            Для выхода из программы пользователь должен ввести символ q
+        """
+        nonlocal res_sum, stop_progam
+        for el in input("Введите числа через пробел: ").split():
+            if el == 'q':
+                stop_progam = True
+                break
+            res_sum = res_sum + float(el)
+
+        print(res_sum)
+        return None if stop_progam else int_func_sum()
+
+    return int_func_sum
 
 
-def func_sum():
-    """
-    Рекурсивная функция суммирования чисел, вводимых пользователем
-    Для выхода из программы пользователь должен ввести символ q
-    """
+func_obj = ext_func_sum()
 
-    global res_sum, stop_progam
-
-    for el in input("Введите числа через пробел: ").split():
-        if el == 'q':
-            stop_progam = True
-            break
-        res_sum = res_sum + float(el)
-
-    print(res_sum)
-
-    return None if stop_progam else func_sum()
-
-
-func_sum()
+func_obj()
 
 """
 6. Реализовать функцию int_func(), принимающую слова из маленьких латинских букв 
